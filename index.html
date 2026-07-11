@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Angel</title>
+<title>Angel Phone</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,29 +15,32 @@
 <body>
 
 
-<div id="app">
+<div class="phone">
 
 
-<!-- 手机主页 -->
+<!-- 首页 -->
 
 <section id="home" class="page active">
 
-<div class="top">
 
-<div class="time">
-12:00
+<div class="status">
+<span id="time">12:00</span>
 </div>
 
-<div class="angel-card">
 
-<img id="homeAvatar" src="" alt="">
+<div class="profile-card">
 
-<div>
-<h2 id="homeName">Angel</h2>
-<p id="homeSign">欢迎来到你的空间</p>
-</div>
+<h1 id="username">
+Angel
+</h1>
 
-</div>
+<p>
+♡ 在线陪伴中
+</p>
+
+<p>
+今天也会陪着你
+</p>
 
 
 </div>
@@ -49,15 +52,11 @@
 
 <div class="app" onclick="openChat()">
 
-<div class="app-icon">
-
-<svg viewBox="0 0 24 24">
-<path d="M4 5h16v11H8l-4 4V5z"/>
-</svg>
-
-</div>
-
+<div class="icon chat-icon">
 <span>Chat</span>
+</div>
+
+<p>Chat</p>
 
 </div>
 
@@ -65,27 +64,13 @@
 
 <div class="app">
 
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="9"/>
-</svg>
-</div>
+<div class="icon">
 
-<span>微博</span>
+微博
 
 </div>
 
-
-
-<div class="app">
-
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<path d="M8 5l11 7-11 7V5z"/>
-</svg>
-</div>
-
-<span>抖音</span>
+<p>微博</p>
 
 </div>
 
@@ -93,27 +78,13 @@
 
 <div class="app">
 
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<rect x="5" y="5" width="14" height="14" rx="4"/>
-</svg>
-</div>
+<div class="icon">
 
-<span>Ins</span>
+TikTok
 
 </div>
 
-
-
-<div class="app">
-
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="8"/>
-</svg>
-</div>
-
-<span>网易云</span>
+<p>抖音</p>
 
 </div>
 
@@ -121,25 +92,41 @@
 
 <div class="app">
 
-<div class="app-icon">
+<div class="icon">
+
+Ins
+
+</div>
+
+<p>Ins</p>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="icon">
+
+♫
+
+</div>
+
+<p>网易云</p>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="icon">
+
 ⚙
-</div>
-
-<span>设置</span>
 
 </div>
 
-
-
-<div class="app">
-
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/>
-</svg>
-</div>
-
-<span>线下</span>
+<p>设置</p>
 
 </div>
 
@@ -147,13 +134,13 @@
 
 <div class="app">
 
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<path d="M4 6h16v12H4z"/>
-</svg>
+<div class="icon">
+
+⌖
+
 </div>
 
-<span>交换日记</span>
+<p>线下</p>
 
 </div>
 
@@ -161,36 +148,31 @@
 
 <div class="app">
 
-<div class="app-icon">
-<svg viewBox="0 0 24 24">
-<path d="M5 4h14v16H5z"/>
-</svg>
-</div>
+<div class="icon">
 
-<span>晋江小说</span>
+日
 
 </div>
 
-
+<p>交换日记</p>
 
 </div>
 
 
 
-<div class="app switch"
+<div class="app">
 
-onclick="openProfile()">
+<div class="icon">
 
-<div class="app-icon">
-
-<svg viewBox="0 0 24 24">
-<circle cx="12" cy="8" r="4"/>
-<path d="M4 21c1-5 15-5 16 0"/>
-</svg>
+晋
 
 </div>
 
-<span>切换小号</span>
+<p>晋江小说</p>
+
+</div>
+
+
 
 </div>
 
@@ -201,134 +183,131 @@ onclick="openProfile()">
 
 
 
-<!-- Chat联系人页面 -->
-
-<section id="chat" class="page">
+<!-- CHAT 联系人页面 -->
 
 
-<header>
+<section id="chatList" class="page">
 
-<h2>Chat</h2>
+
+<div class="topbar">
+
+
+<button onclick="backHome()">
+‹
+</button>
+
+
+<h2>
+Chat
+</h2>
 
 
 <div>
 
-<button onclick="searchContact()">⌕</button>
-
-<button onclick="openCreate()">＋</button>
-
-</div>
-
-</header>
+<button onclick="searchFriend()">
+⌕
+</button>
 
 
-
-<div class="profile-widget">
-
-<img id="chatAvatar">
-
-<div>
-
-<h3 id="chatUser">
-暂无用户
-</h3>
-
-<p>
-创建你的 User 和 Character
-</p>
+<button onclick="addPerson()">
+＋
+</button>
 
 </div>
 
+
 </div>
+
 
 
 
 <div id="contacts">
 
+
+<div class="empty">
+
+还没有联系人
+
+<br>
+
+请创建 User 和 Char
+
+</div>
+
+
 </div>
 
 
 
-<nav>
 
-<button onclick="showContact()">
+
+<div class="chat-nav">
+
+
+<button onclick="showContacts()">
 联系人
 </button>
 
-<button onclick="openCreate()">
+
+<button onclick="addPerson()">
 添加
 </button>
+
 
 <button>
 朋友圈
 </button>
 
-<button>
+
+<button onclick="showProfile()">
 主页
 </button>
 
-</nav>
+
+</div>
 
 
-</section><!-- 创建 User / Character 页面 -->
+</section>
+
+
+
+
+
+
+
+<!-- 创建页面 -->
 
 
 <section id="create" class="page">
 
 
-<header>
+<div class="topbar">
 
-<button onclick="backChat()">←</button>
-
-<h2>创建</h2>
-
-</header>
+<button onclick="openChat()">
+‹
+</button>
 
 
-
-<div class="create-box">
-
-
-<h3>
-创建 User
-</h3>
+<h2>
+创建
+</h2>
 
 
-<input id="userName" placeholder="你的名字">
+</div>
 
 
-<input id="userSign" placeholder="你的简介">
+
+<div class="glass-box">
 
 
 <button onclick="createUser()">
-保存 User
+创建 User
 </button>
 
 
 
-<hr>
-
-
-
-<h3>
-创建 Character
-</h3>
-
-
-
-<input id="charName" placeholder="角色名字">
-
-
-<input id="charPersonality" placeholder="角色性格">
-
-
-<input id="charRelation" placeholder="关系设定">
-
-
-<button onclick="createCharacter()">
-
-创建角色
-
+<button onclick="createChar()">
+创建 Char
 </button>
 
 
@@ -337,7 +316,6 @@ onclick="openProfile()">
 
 
 </section>
-
 
 
 
@@ -347,54 +325,49 @@ onclick="openProfile()">
 <!-- 聊天页面 -->
 
 
-<section id="message" class="page">
+<section id="chatRoom" class="page">
 
 
-<header>
+<div class="topbar">
 
 
-<button onclick="backContact()">
-←
+<button onclick="openChat()">
+‹
 </button>
 
 
-<h2 id="chatTitle">
+<h2 id="charName">
 
 </h2>
 
 
-</header>
+</div>
 
 
 
 
 <div id="messages">
 
+
 </div>
 
 
 
 
+<div class="input-area">
 
-<div class="send-box">
 
+<input id="messageInput"
+placeholder="">
 
-<input 
-id="messageInput"
-placeholder="输入消息..."
->
 
 
 <button onclick="sendMessage()">
-
 发送
-
 </button>
 
 
 </div>
-
-
 
 
 </section>
@@ -404,48 +377,42 @@ placeholder="输入消息..."
 
 
 
-
-<!-- 小号页面 -->
+<!-- 主页 -->
 
 
 <section id="profile" class="page">
 
 
-<header>
-
-<button onclick="backHome()">
-←
-</button>
+<div class="topbar">
 
 
 <h2>
-切换小号
+主页
 </h2>
 
-
-</header>
-
-
-
-<div class="account-box">
-
-
-<div>
-
-Angel账号
 
 </div>
 
 
+<div class="glass-box">
+
+
+<h2>
+Angel
+</h2>
+
+
 <button>
+切换小号
+</button>
 
-＋ 创建新账号
 
+<button>
+修改资料
 </button>
 
 
 </div>
-
 
 
 </section>
@@ -453,9 +420,7 @@ Angel账号
 
 
 
-
 </div>
-
 
 
 
@@ -464,520 +429,11 @@ Angel账号
 
 </body>
 
-</html>let user = JSON.parse(localStorage.getItem("user")) || null;
-
-let characters =
-JSON.parse(localStorage.getItem("characters")) || [];
-
-let currentCharacter = null;
-
-
-
-function hideAll(){
-
-document.querySelectorAll(".page")
-.forEach(page=>{
-
-page.classList.remove("active");
-
-});
-
-}
-
-
-
-function showPage(id){
-
-hideAll();
-
-document.getElementById(id)
-.classList.add("active");
-
-}
-
-
-
-
-// 首页进入Chat
-
-function openChat(){
-
-showPage("chat");
-
-renderContacts();
-
-}
-
-
-
-
-// 返回主页
-
-function backHome(){
-
-showPage("home");
-
-}
-
-
-
-
-// 返回Chat
-
-function backChat(){
-
-showPage("chat");
-
-}
-
-
-
-
-function backContact(){
-
-showPage("chat");
-
-}
-
-
-
-
-// 打开创建
-
-function openCreate(){
-
-showPage("create");
-
-}
-
-
-
-
-// 创建User
-
-function createUser(){
-
-
-let name =
-document.getElementById("userName").value;
-
-
-let sign =
-document.getElementById("userSign").value;
-
-
-
-if(!name){
-
-alert("请输入名字");
-
-return;
-
-}
-
-
-
-user={
-
-name:name,
-
-sign:sign
-
-};
-
-
-
-localStorage.setItem(
-"user",
-JSON.stringify(user)
-);
-
-
-
-document.getElementById("chatUser")
-.innerText=name;
-
-
-
-alert("User创建成功");
-
-
-}
-
-
-
-
-// 创建Character
-
-
-function createCharacter(){
-
-
-let name =
-document.getElementById("charName").value;
-
-
-let personality =
-document.getElementById("charPersonality").value;
-
-
-let relation =
-document.getElementById("charRelation").value;
-
-
-
-if(!name){
-
-alert("请输入角色名字");
-
-return;
-
-}
-
-
-
-let character={
-
-
-id:Date.now(),
-
-
-name:name,
-
-
-personality:personality,
-
-
-relation:relation,
-
-
-messages:[]
-
-};
-
-
-
-characters.push(character);
-
-
-
-localStorage.setItem(
-"characters",
-JSON.stringify(characters)
-);
-
-
-
-alert("Character创建成功");
-
-
-showPage("chat");
-
-
-renderContacts();
-
-
-}
-
-
-
-
-
-// 显示联系人
-
-
-function renderContacts(){
-
-
-let box=
-document.getElementById("contacts");
-
-
-
-box.innerHTML="";
-
-
-
-if(characters.length===0){
-
-
-box.innerHTML=
-
-`
-
-<div class="empty">
-
-暂无联系人<br>
-
-请先创建 Character
-
-</div>
-
-`;
-
-
-return;
-
-}
-
-
-
-characters.forEach(c=>{
-
-
-let div=document.createElement("div");
-
-
-div.className="contact";
-
-
-
-div.innerHTML=
-
-`
-
-<div class="avatar"></div>
-
-<div>
-
-<h3>${c.name}</h3>
-
-<p>
-
-${c.relation || "Character"}
-
-</p>
-
-</div>
-
-`;
-
-
-
-div.onclick=()=>{
-
-openMessage(c);
-
-};
-
-
-
-box.appendChild(div);
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-// 打开聊天
-
-
-function openMessage(character){
-
-
-currentCharacter=character;
-
-
-
-document.getElementById("chatTitle")
-.innerText=character.name;
-
-
-
-document.getElementById("messages")
-.innerHTML="";
-
-
-
-character.messages.forEach(m=>{
-
-
-let div=document.createElement("div");
-
-
-div.className=m.type;
-
-
-
-div.innerText=m.text;
-
-
-document
-.getElementById("messages")
-.appendChild(div);
-
-
-
-});
-
-
-
-showPage("message");
-
-
-}
-
-
-
-
-
-
-
-// 发送消息
-
-
-function sendMessage(){
-
-
-
-let input=
-document.getElementById("messageInput");
-
-
-
-let text=input.value;
-
-
-
-if(!text){
-
-return;
-
-}
-
-
-
-currentCharacter.messages.push({
-
-type:"user",
-
-text:text
-
-});
-
-
-
-addMessage(
-"你："+text,
-"user"
-);
-
-
-
-input.value="";
-
-
-
-// 模拟Character回复
-
-
-setTimeout(()=>{
-
-
-let reply="我在，继续和我聊聊吧。";
-
-
-currentCharacter.messages.push({
-
-type:"character",
-
-text:reply
-
-});
-
-
-
-addMessage(
-
-reply,
-
-"character"
-
-);
-
-
-
-saveCharacters();
-
-
-
-},700);
-
-
-
-}
-
-
-
-
-function addMessage(text,type){
-
-
-let div=document.createElement("div");
-
-
-div.className=type;
-
-
-div.innerText=text;
-
-
-
-document
-.getElementById("messages")
-.appendChild(div);
-
-
-}
-
-
-
-
-function saveCharacters(){
-
-
-localStorage.setItem(
-
-"characters",
-
-JSON.stringify(characters)
-
-);
-
-
-}
-
-
-
-
-function searchContact(){
-
-alert("联系人搜索功能");
-
-}
-
-
-
-
-// 页面打开加载
-
-window.onload=function(){
-
-renderContacts();
-
-};*{
+</html>*{
     box-sizing:border-box;
     font-family:
     -apple-system,
     BlinkMacSystemFont,
-    "SF Pro Display",
     "PingFang SC",
     sans-serif;
 }
@@ -989,30 +445,57 @@ body{
 
     height:100vh;
 
+    background:#dfe3ea;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+/* 手机外框 */
+
+.phone{
+
+    width:390px;
+
+    height:844px;
+
+    max-width:100vw;
+
+    max-height:100vh;
+
+
     overflow:hidden;
 
+    position:relative;
+
+
     background:
+
     linear-gradient(
-    135deg,
-    #f7f7f7,
-    #dfe5ee
+    150deg,
+    #ffffff,
+    #e8ebf2
     );
 
-    color:#222;
+
+    border-radius:45px;
+
+
+    box-shadow:
+
+    0 30px 80px rgba(0,0,0,.18);
 
 }
 
 
 
-#app{
-
-    width:100%;
-
-    height:100%;
-
-}
-
-
+/* 页面 */
 
 .page{
 
@@ -1020,12 +503,11 @@ body{
 
     width:100%;
 
-    height:100vh;
+    height:100%;
 
     padding:35px 25px;
 
 }
-
 
 
 .page.active{
@@ -1036,13 +518,11 @@ body{
 
 
 
+/* 时间 */
 
-/* 首页 */
+.status{
 
-
-.time{
-
-    font-size:55px;
+    font-size:45px;
 
     font-weight:300;
 
@@ -1050,11 +530,18 @@ body{
 
 
 
-.angel-card{
 
-    margin-top:30px;
+
+/* 主页卡片 */
+
+.profile-card{
+
+
+    margin-top:25px;
+
 
     padding:20px;
+
 
     border-radius:30px;
 
@@ -1067,43 +554,27 @@ body{
     backdrop-filter:blur(25px);
 
 
-    display:flex;
-
-    align-items:center;
-
-
-    box-shadow:
-
-    0 15px 40px rgba(0,0,0,.08);
 
 }
 
 
-.angel-card img{
 
-    width:60px;
-
-    height:60px;
-
-    border-radius:22px;
-
-    background:#ddd;
-
-    margin-right:15px;
-
-}
-
-
+/* APP */
 
 .apps{
 
+
     margin-top:45px;
+
 
     display:grid;
 
+
     grid-template-columns:repeat(3,1fr);
 
+
     gap:28px;
+
 
 }
 
@@ -1113,19 +584,24 @@ body{
 
     text-align:center;
 
+    font-size:12px;
+
 }
 
 
 
-.app-icon{
+.icon{
+
 
     width:65px;
 
     height:65px;
 
+
     margin:auto;
 
-    border-radius:23px;
+
+    border-radius:22px;
 
 
     background:
@@ -1138,92 +614,98 @@ body{
 
     display:flex;
 
-    align-items:center;
 
     justify-content:center;
 
 
+    align-items:center;
+
+
     box-shadow:
 
-    0 10px 25px rgba(0,0,0,.1);
+    0 8px 20px rgba(0,0,0,.08);
+
+
+    font-size:14px;
+
 
 }
 
 
 
-.app-icon svg{
+/* Chat图标 */
 
-    width:30px;
+.chat-icon{
 
-    height:30px;
+    font-size:13px;
 
-    fill:none;
-
-    stroke:#222;
-
-    stroke-width:1.5;
+    font-weight:600;
 
 }
 
-
-.app span{
-
-    display:block;
-
-    margin-top:8px;
-
-    font-size:12px;
-
-}
-
-
-
-.switch{
-
-    margin-top:30px;
-
-}
 
 
 
 
 /* 顶部 */
 
-header{
+.topbar{
+
 
     display:flex;
 
+
     justify-content:space-between;
+
 
     align-items:center;
 
+
 }
 
 
 
-header button{
+.topbar button{
+
 
     border:none;
 
+
     background:none;
 
+
     font-size:24px;
+
 
 }
 
 
 
 
-/* Chat联系人 */
+
+/* 联系人 */
+
+#contacts{
 
 
-.profile-widget{
+    margin-top:30px;
 
-    margin-top:25px;
 
-    padding:20px;
+}
 
-    border-radius:30px;
+
+
+
+.contact{
+
+
+    padding:16px;
+
+
+    margin-bottom:15px;
+
+
+    border-radius:25px;
 
 
     background:
@@ -1232,58 +714,6 @@ header button{
 
 
     backdrop-filter:blur(25px);
-
-
-    display:flex;
-
-    align-items:center;
-
-
-}
-
-
-
-.profile-widget img{
-
-    width:55px;
-
-    height:55px;
-
-    border-radius:20px;
-
-    background:#ddd;
-
-}
-
-
-
-.profile-widget h3{
-
-    margin-left:15px;
-
-}
-
-
-
-
-
-.contact{
-
-
-    margin-top:15px;
-
-    padding:15px;
-
-
-    border-radius:25px;
-
-
-    background:
-
-    rgba(255,255,255,.35);
-
-
-    backdrop-filter:blur(20px);
 
 
     display:flex;
@@ -1299,15 +729,16 @@ header button{
 .avatar{
 
 
-    width:50px;
+    width:55px;
 
-    height:50px;
+
+    height:55px;
+
+
+    border-radius:20px;
 
 
     background:#ddd;
-
-
-    border-radius:18px;
 
 
     margin-right:15px;
@@ -1317,13 +748,19 @@ header button{
 
 
 
+
+
 .empty{
 
-    margin-top:100px;
+
+    margin-top:180px;
+
 
     text-align:center;
 
+
     color:#999;
+
 
 }
 
@@ -1331,21 +768,24 @@ header button{
 
 
 
-/* 底部导航 */
+/* 底部 */
 
+.chat-nav{
 
-nav{
 
     position:absolute;
 
-    bottom:20px;
 
-    left:20px;
-
-    right:20px;
+    bottom:25px;
 
 
-    height:75px;
+    left:25px;
+
+
+    right:25px;
+
+
+    height:70px;
 
 
     border-radius:35px;
@@ -1353,7 +793,7 @@ nav{
 
     background:
 
-    rgba(255,255,255,.5);
+    rgba(255,255,255,.55);
 
 
     backdrop-filter:blur(30px);
@@ -1361,7 +801,9 @@ nav{
 
     display:flex;
 
+
     justify-content:space-around;
+
 
     align-items:center;
 
@@ -1370,13 +812,17 @@ nav{
 
 
 
-nav button{
+.chat-nav button{
+
 
     border:none;
+
 
     background:none;
 
-    font-size:13px;
+
+    font-size:12px;
+
 
 }
 
@@ -1384,51 +830,50 @@ nav button{
 
 
 
-/* 创建页面 */
+/* 创建 */
 
 
-.create-box{
+.glass-box{
+
 
     margin-top:40px;
 
+
+    padding:25px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(255,255,255,.5);
+
+
+    backdrop-filter:blur(25px);
+
+
 }
 
 
 
-input{
+.glass-box button{
+
 
     width:100%;
 
+
     height:50px;
-
-
-    border:none;
-
-
-    outline:none;
 
 
     margin:10px 0;
 
 
-    padding:0 20px;
-
-
     border-radius:25px;
 
 
-    background:
+    border:none;
 
-    rgba(255,255,255,.6);
-
-
-}
-
-
-
-button{
-
-    cursor:pointer;
 
 }
 
@@ -1438,40 +883,24 @@ button{
 
 /* 聊天 */
 
-
 #messages{
 
-    margin-top:40px;
 
     height:70%;
 
+
     overflow:auto;
 
-}
 
-
-
-.user,
-.character{
-
-
-    max-width:75%;
-
-
-    padding:14px 18px;
-
-
-    border-radius:22px;
-
-
-    margin:12px 0;
+    margin-top:30px;
 
 
 }
 
 
 
-.user{
+.message-user{
+
 
     margin-left:auto;
 
@@ -1486,7 +915,8 @@ button{
 
 
 
-.character{
+.message-char{
+
 
     background:white;
 
@@ -1495,7 +925,28 @@ button{
 
 
 
-.send-box{
+.message-user,
+.message-char{
+
+
+    max-width:75%;
+
+
+    padding:12px 16px;
+
+
+    border-radius:22px;
+
+
+    margin:12px 0;
+
+
+}
+
+
+
+.input-area{
+
 
     position:absolute;
 
@@ -1516,40 +967,39 @@ button{
 
 
 
-.send-box input{
-
-    margin:0;
-
-}
+.input-area input{
 
 
+    flex:1;
 
-.send-box button{
 
-    width:70px;
+    height:45px;
 
-    border-radius:30px;
+
+    border-radius:25px;
+
 
     border:none;
 
+
+    padding:0 15px;
+
+
 }
 
 
 
-
-/* 小号 */
-
-.account-box{
-
-    margin-top:40px;
-
-    padding:25px;
-
-    border-radius:30px;
+.input-area button{
 
 
-    background:
+    width:60px;
 
-    rgba(255,255,255,.5);
 
-}
+    border:none;
+
+
+    border-radius:25px;
+
+
+}<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
