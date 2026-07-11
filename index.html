@@ -2,16 +2,977 @@
 <html lang="zh-CN">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Angel</title>
 
+<link rel="stylesheet" href="style.css">
 
-<style>
+</head>
 
-*{
+
+<body>
+
+
+<div id="app">
+
+
+<!-- 手机主页 -->
+
+<section id="home" class="page active">
+
+<div class="top">
+
+<div class="time">
+12:00
+</div>
+
+<div class="angel-card">
+
+<img id="homeAvatar" src="" alt="">
+
+<div>
+<h2 id="homeName">Angel</h2>
+<p id="homeSign">欢迎来到你的空间</p>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="apps">
+
+
+<div class="app" onclick="openChat()">
+
+<div class="app-icon">
+
+<svg viewBox="0 0 24 24">
+<path d="M4 5h16v11H8l-4 4V5z"/>
+</svg>
+
+</div>
+
+<span>Chat</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9"/>
+</svg>
+</div>
+
+<span>微博</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<path d="M8 5l11 7-11 7V5z"/>
+</svg>
+</div>
+
+<span>抖音</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<rect x="5" y="5" width="14" height="14" rx="4"/>
+</svg>
+</div>
+
+<span>Ins</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="8"/>
+</svg>
+</div>
+
+<span>网易云</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+⚙
+</div>
+
+<span>设置</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/>
+</svg>
+</div>
+
+<span>线下</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<path d="M4 6h16v12H4z"/>
+</svg>
+</div>
+
+<span>交换日记</span>
+
+</div>
+
+
+
+<div class="app">
+
+<div class="app-icon">
+<svg viewBox="0 0 24 24">
+<path d="M5 4h14v16H5z"/>
+</svg>
+</div>
+
+<span>晋江小说</span>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="app switch"
+
+onclick="openProfile()">
+
+<div class="app-icon">
+
+<svg viewBox="0 0 24 24">
+<circle cx="12" cy="8" r="4"/>
+<path d="M4 21c1-5 15-5 16 0"/>
+</svg>
+
+</div>
+
+<span>切换小号</span>
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Chat联系人页面 -->
+
+<section id="chat" class="page">
+
+
+<header>
+
+<h2>Chat</h2>
+
+
+<div>
+
+<button onclick="searchContact()">⌕</button>
+
+<button onclick="openCreate()">＋</button>
+
+</div>
+
+</header>
+
+
+
+<div class="profile-widget">
+
+<img id="chatAvatar">
+
+<div>
+
+<h3 id="chatUser">
+暂无用户
+</h3>
+
+<p>
+创建你的 User 和 Character
+</p>
+
+</div>
+
+</div>
+
+
+
+<div id="contacts">
+
+</div>
+
+
+
+<nav>
+
+<button onclick="showContact()">
+联系人
+</button>
+
+<button onclick="openCreate()">
+添加
+</button>
+
+<button>
+朋友圈
+</button>
+
+<button>
+主页
+</button>
+
+</nav>
+
+
+</section><!-- 创建 User / Character 页面 -->
+
+
+<section id="create" class="page">
+
+
+<header>
+
+<button onclick="backChat()">←</button>
+
+<h2>创建</h2>
+
+</header>
+
+
+
+<div class="create-box">
+
+
+<h3>
+创建 User
+</h3>
+
+
+<input id="userName" placeholder="你的名字">
+
+
+<input id="userSign" placeholder="你的简介">
+
+
+<button onclick="createUser()">
+保存 User
+</button>
+
+
+
+<hr>
+
+
+
+<h3>
+创建 Character
+</h3>
+
+
+
+<input id="charName" placeholder="角色名字">
+
+
+<input id="charPersonality" placeholder="角色性格">
+
+
+<input id="charRelation" placeholder="关系设定">
+
+
+<button onclick="createCharacter()">
+
+创建角色
+
+</button>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- 聊天页面 -->
+
+
+<section id="message" class="page">
+
+
+<header>
+
+
+<button onclick="backContact()">
+←
+</button>
+
+
+<h2 id="chatTitle">
+
+</h2>
+
+
+</header>
+
+
+
+
+<div id="messages">
+
+</div>
+
+
+
+
+
+<div class="send-box">
+
+
+<input 
+id="messageInput"
+placeholder="输入消息..."
+>
+
+
+<button onclick="sendMessage()">
+
+发送
+
+</button>
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- 小号页面 -->
+
+
+<section id="profile" class="page">
+
+
+<header>
+
+<button onclick="backHome()">
+←
+</button>
+
+
+<h2>
+切换小号
+</h2>
+
+
+</header>
+
+
+
+<div class="account-box">
+
+
+<div>
+
+Angel账号
+
+</div>
+
+
+<button>
+
+＋ 创建新账号
+
+</button>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>let user = JSON.parse(localStorage.getItem("user")) || null;
+
+let characters =
+JSON.parse(localStorage.getItem("characters")) || [];
+
+let currentCharacter = null;
+
+
+
+function hideAll(){
+
+document.querySelectorAll(".page")
+.forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+}
+
+
+
+function showPage(id){
+
+hideAll();
+
+document.getElementById(id)
+.classList.add("active");
+
+}
+
+
+
+
+// 首页进入Chat
+
+function openChat(){
+
+showPage("chat");
+
+renderContacts();
+
+}
+
+
+
+
+// 返回主页
+
+function backHome(){
+
+showPage("home");
+
+}
+
+
+
+
+// 返回Chat
+
+function backChat(){
+
+showPage("chat");
+
+}
+
+
+
+
+function backContact(){
+
+showPage("chat");
+
+}
+
+
+
+
+// 打开创建
+
+function openCreate(){
+
+showPage("create");
+
+}
+
+
+
+
+// 创建User
+
+function createUser(){
+
+
+let name =
+document.getElementById("userName").value;
+
+
+let sign =
+document.getElementById("userSign").value;
+
+
+
+if(!name){
+
+alert("请输入名字");
+
+return;
+
+}
+
+
+
+user={
+
+name:name,
+
+sign:sign
+
+};
+
+
+
+localStorage.setItem(
+"user",
+JSON.stringify(user)
+);
+
+
+
+document.getElementById("chatUser")
+.innerText=name;
+
+
+
+alert("User创建成功");
+
+
+}
+
+
+
+
+// 创建Character
+
+
+function createCharacter(){
+
+
+let name =
+document.getElementById("charName").value;
+
+
+let personality =
+document.getElementById("charPersonality").value;
+
+
+let relation =
+document.getElementById("charRelation").value;
+
+
+
+if(!name){
+
+alert("请输入角色名字");
+
+return;
+
+}
+
+
+
+let character={
+
+
+id:Date.now(),
+
+
+name:name,
+
+
+personality:personality,
+
+
+relation:relation,
+
+
+messages:[]
+
+};
+
+
+
+characters.push(character);
+
+
+
+localStorage.setItem(
+"characters",
+JSON.stringify(characters)
+);
+
+
+
+alert("Character创建成功");
+
+
+showPage("chat");
+
+
+renderContacts();
+
+
+}
+
+
+
+
+
+// 显示联系人
+
+
+function renderContacts(){
+
+
+let box=
+document.getElementById("contacts");
+
+
+
+box.innerHTML="";
+
+
+
+if(characters.length===0){
+
+
+box.innerHTML=
+
+`
+
+<div class="empty">
+
+暂无联系人<br>
+
+请先创建 Character
+
+</div>
+
+`;
+
+
+return;
+
+}
+
+
+
+characters.forEach(c=>{
+
+
+let div=document.createElement("div");
+
+
+div.className="contact";
+
+
+
+div.innerHTML=
+
+`
+
+<div class="avatar"></div>
+
+<div>
+
+<h3>${c.name}</h3>
+
+<p>
+
+${c.relation || "Character"}
+
+</p>
+
+</div>
+
+`;
+
+
+
+div.onclick=()=>{
+
+openMessage(c);
+
+};
+
+
+
+box.appendChild(div);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+// 打开聊天
+
+
+function openMessage(character){
+
+
+currentCharacter=character;
+
+
+
+document.getElementById("chatTitle")
+.innerText=character.name;
+
+
+
+document.getElementById("messages")
+.innerHTML="";
+
+
+
+character.messages.forEach(m=>{
+
+
+let div=document.createElement("div");
+
+
+div.className=m.type;
+
+
+
+div.innerText=m.text;
+
+
+document
+.getElementById("messages")
+.appendChild(div);
+
+
+
+});
+
+
+
+showPage("message");
+
+
+}
+
+
+
+
+
+
+
+// 发送消息
+
+
+function sendMessage(){
+
+
+
+let input=
+document.getElementById("messageInput");
+
+
+
+let text=input.value;
+
+
+
+if(!text){
+
+return;
+
+}
+
+
+
+currentCharacter.messages.push({
+
+type:"user",
+
+text:text
+
+});
+
+
+
+addMessage(
+"你："+text,
+"user"
+);
+
+
+
+input.value="";
+
+
+
+// 模拟Character回复
+
+
+setTimeout(()=>{
+
+
+let reply="我在，继续和我聊聊吧。";
+
+
+currentCharacter.messages.push({
+
+type:"character",
+
+text:reply
+
+});
+
+
+
+addMessage(
+
+reply,
+
+"character"
+
+);
+
+
+
+saveCharacters();
+
+
+
+},700);
+
+
+
+}
+
+
+
+
+function addMessage(text,type){
+
+
+let div=document.createElement("div");
+
+
+div.className=type;
+
+
+div.innerText=text;
+
+
+
+document
+.getElementById("messages")
+.appendChild(div);
+
+
+}
+
+
+
+
+function saveCharacters(){
+
+
+localStorage.setItem(
+
+"characters",
+
+JSON.stringify(characters)
+
+);
+
+
+}
+
+
+
+
+function searchContact(){
+
+alert("联系人搜索功能");
+
+}
+
+
+
+
+// 页面打开加载
+
+window.onload=function(){
+
+renderContacts();
+
+};*{
     box-sizing:border-box;
     font-family:
     -apple-system,
@@ -25,66 +986,77 @@
 body{
 
     margin:0;
+
     height:100vh;
+
     overflow:hidden;
 
     background:
     linear-gradient(
     135deg,
-    #f7f7f8,
+    #f7f7f7,
     #dfe5ee
     );
-
-}
-
-
-
-/* 主屏幕 */
-
-.screen{
-
-    width:100vw;
-    height:100vh;
-
-    padding:45px 25px;
-
-    position:relative;
-
-}
-
-
-
-/* 顶部 */
-
-.time{
-
-    font-size:58px;
-    font-weight:300;
 
     color:#222;
 
 }
 
 
-.date{
 
-    margin-top:5px;
+#app{
 
-    color:#777;
+    width:100%;
+
+    height:100%;
 
 }
 
 
 
-/* Angel小组件 */
+.page{
 
-.widget{
+    display:none;
 
-    margin-top:35px;
+    width:100%;
 
-    padding:25px;
+    height:100vh;
 
-    border-radius:32px;
+    padding:35px 25px;
+
+}
+
+
+
+.page.active{
+
+    display:block;
+
+}
+
+
+
+
+/* 首页 */
+
+
+.time{
+
+    font-size:55px;
+
+    font-weight:300;
+
+}
+
+
+
+.angel-card{
+
+    margin-top:30px;
+
+    padding:20px;
+
+    border-radius:30px;
 
 
     background:
@@ -95,53 +1067,45 @@ body{
     backdrop-filter:blur(25px);
 
 
+    display:flex;
+
+    align-items:center;
+
+
     box-shadow:
 
-    0 20px 50px rgba(0,0,0,.08);
-
-
-}
-
-
-.widget h1{
-
-    margin:0;
-
-    font-size:30px;
+    0 15px 40px rgba(0,0,0,.08);
 
 }
 
 
-.widget p{
+.angel-card img{
 
-    margin-top:12px;
+    width:60px;
 
-    color:#777;
+    height:60px;
+
+    border-radius:22px;
+
+    background:#ddd;
+
+    margin-right:15px;
 
 }
 
-
-
-/* App区域 */
 
 
 .apps{
 
-
     margin-top:45px;
-
 
     display:grid;
 
-    grid-template-columns:
-    repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
-
-    gap:35px 25px;
-
+    gap:28px;
 
 }
-
 
 
 
@@ -149,26 +1113,19 @@ body{
 
     text-align:center;
 
-    cursor:pointer;
-
 }
 
 
 
+.app-icon{
 
-.icon{
+    width:65px;
 
-
-    width:78px;
-
-    height:78px;
-
+    height:65px;
 
     margin:auto;
 
-
-    border-radius:27px;
-
+    border-radius:23px;
 
 
     background:
@@ -176,9 +1133,7 @@ body{
     rgba(255,255,255,.55);
 
 
-
     backdrop-filter:blur(20px);
-
 
 
     display:flex;
@@ -188,103 +1143,98 @@ body{
     justify-content:center;
 
 
-
     box-shadow:
 
-
-    inset 0 1px 8px rgba(255,255,255,.8),
-
-
-    0 15px 30px rgba(0,0,0,.12);
-
-
-
-    transition:.25s;
-
+    0 10px 25px rgba(0,0,0,.1);
 
 }
 
 
 
-.icon:active{
+.app-icon svg{
 
-    transform:scale(.9);
+    width:30px;
 
-}
+    height:30px;
 
-
-
-.icon svg{
-
-    width:34px;
-
-    height:34px;
+    fill:none;
 
     stroke:#222;
 
-}
+    stroke-width:1.5;
 
+}
 
 
 .app span{
 
-
     display:block;
 
-    margin-top:10px;
+    margin-top:8px;
 
-
-    font-size:13px;
-
-    color:#333;
-
+    font-size:12px;
 
 }
 
 
 
-/* 底部dock */
+.switch{
 
+    margin-top:30px;
 
-.dock{
-
-
-    position:absolute;
-
-
-    bottom:30px;
-
-
-    left:25px;
-
-    right:25px;
+}
 
 
 
-    height:85px;
+
+/* 顶部 */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
 
 
 
-    border-radius:35px;
+header button{
 
+    border:none;
+
+    background:none;
+
+    font-size:24px;
+
+}
+
+
+
+
+/* Chat联系人 */
+
+
+.profile-widget{
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:30px;
 
 
     background:
 
-
-    rgba(255,255,255,.5);
-
+    rgba(255,255,255,.45);
 
 
-    backdrop-filter:blur(30px);
-
+    backdrop-filter:blur(25px);
 
 
     display:flex;
-
-
-    justify-content:space-around;
-
 
     align-items:center;
 
@@ -293,27 +1243,50 @@ body{
 
 
 
-.dock .small{
-
+.profile-widget img{
 
     width:55px;
 
     height:55px;
 
-
     border-radius:20px;
+
+    background:#ddd;
+
+}
+
+
+
+.profile-widget h3{
+
+    margin-left:15px;
+
+}
+
+
+
+
+
+.contact{
+
+
+    margin-top:15px;
+
+    padding:15px;
+
+
+    border-radius:25px;
 
 
     background:
 
-    rgba(255,255,255,.8);
+    rgba(255,255,255,.35);
 
+
+    backdrop-filter:blur(20px);
 
 
     display:flex;
-
-
-    justify-content:center;
 
 
     align-items:center;
@@ -323,60 +1296,137 @@ body{
 
 
 
+.avatar{
 
 
-/* AI 页面 */
+    width:50px;
 
-.ai-page{
+    height:50px;
 
+
+    background:#ddd;
+
+
+    border-radius:18px;
+
+
+    margin-right:15px;
+
+
+}
+
+
+
+.empty{
+
+    margin-top:100px;
+
+    text-align:center;
+
+    color:#999;
+
+}
+
+
+
+
+
+/* 底部导航 */
+
+
+nav{
 
     position:absolute;
 
+    bottom:20px;
 
-    inset:0;
+    left:20px;
 
+    right:20px;
+
+
+    height:75px;
+
+
+    border-radius:35px;
 
 
     background:
 
-
-    rgba(245,245,245,.75);
-
+    rgba(255,255,255,.5);
 
 
-    backdrop-filter:blur(35px);
+    backdrop-filter:blur(30px);
 
 
+    display:flex;
 
-    padding:40px 25px;
+    justify-content:space-around;
 
-
-
-    transform:translateY(100%);
-
-
-
-    transition:.45s;
+    align-items:center;
 
 
 }
 
 
 
-.ai-page.show{
+nav button{
+
+    border:none;
+
+    background:none;
+
+    font-size:13px;
+
+}
 
 
-    transform:translateY(0);
+
+
+
+/* 创建页面 */
+
+
+.create-box{
+
+    margin-top:40px;
+
+}
+
+
+
+input{
+
+    width:100%;
+
+    height:50px;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    margin:10px 0;
+
+
+    padding:0 20px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,.6);
 
 
 }
 
 
 
-.back{
-
-
-    font-size:30px;
+button{
 
     cursor:pointer;
 
@@ -384,69 +1434,46 @@ body{
 
 
 
-.ai-title{
 
 
-    font-size:32px;
-
-    margin-top:25px;
+/* 聊天 */
 
 
-}
-
-
-
-.status{
-
-    color:#888;
-
-}
-
-
-
-.chat{
-
+#messages{
 
     margin-top:40px;
 
+    height:70%;
+
+    overflow:auto;
 
 }
 
 
 
-.message{
+.user,
+.character{
 
 
     max-width:75%;
 
 
-    padding:16px 20px;
+    padding:14px 18px;
 
 
-    border-radius:25px;
+    border-radius:22px;
 
 
-    margin-bottom:18px;
-
-
-    line-height:1.5;
+    margin:12px 0;
 
 
 }
 
 
 
-.from-ai{
+.user{
 
-
-    background:white;
-
-
-}
-
-
-
-.from-user{
+    margin-left:auto;
 
 
     background:#222;
@@ -455,360 +1482,74 @@ body{
     color:white;
 
 
-    margin-left:auto;
+}
+
+
+
+.character{
+
+    background:white;
 
 
 }
 
 
 
-.input{
-
+.send-box{
 
     position:absolute;
 
 
-    bottom:30px;
+    bottom:25px;
 
 
     left:25px;
 
+
     right:25px;
-
-
-    height:55px;
-
-
-
-    background:white;
-
-
-    border-radius:30px;
 
 
     display:flex;
 
 
-    align-items:center;
+}
 
 
-    padding-left:20px;
 
+.send-box input{
 
-    color:#999;
-
+    margin:0;
 
 }
 
 
 
-</style>
+.send-box button{
 
-</head><body>
+    width:70px;
 
+    border-radius:30px;
 
-<div class="screen">
-
-
-<div class="time">
-01:25
-</div>
-
-
-<div class="date">
-July 12 · Saturday
-</div>
-
-
-
-<div class="widget">
-
-<h1>
-Angel
-</h1>
-
-<p>
-♡ 在线陪伴中<br>
-今天也会陪着你
-</p>
-
-</div>
-
-
-
-<div class="apps">
-
-
-<!-- AI -->
-
-<div class="app" onclick="openAI()">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5Z"/>
-
-</svg>
-
-</div>
-
-<span>
-AI
-</span>
-
-</div>
-
-
-
-
-<!-- 聊天 -->
-
-<div class="app" onclick="openAI()">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<path d="M4 5H20V16H8L4 20V5Z"/>
-
-</svg>
-
-</div>
-
-<span>
-聊天
-</span>
-
-</div>
-
-
-
-
-
-<!-- 查找 -->
-
-<div class="app">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<circle cx="11" cy="11" r="7"/>
-
-<line x1="16" y1="16" x2="21" y2="21"/>
-
-</svg>
-
-</div>
-
-<span>
-查找
-</span>
-
-</div>
-
-
-
-
-
-<!-- 手机 -->
-
-<div class="app">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<rect x="7" y="2" width="10" height="20" rx="3"/>
-
-</svg>
-
-</div>
-
-<span>
-手机
-</span>
-
-</div>
-
-
-
-
-
-<!-- 微博 -->
-
-<div class="app">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<circle cx="12" cy="12" r="9"/>
-
-<path d="M8 12H16"/>
-
-</svg>
-
-</div>
-
-<span>
-微博
-</span>
-
-</div>
-
-
-
-
-
-<!-- 线下 -->
-
-<div class="app">
-
-<div class="icon">
-
-<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
-
-<path d="M12 21C12 21 19 14 19 9A7 7 0 0 0 5 9C5 14 12 21 12 21Z"/>
-
-<circle cx="12" cy="9" r="2"/>
-
-</svg>
-
-</div>
-
-<span>
-线下
-</span>
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="dock">
-
-<div class="small">
-⌂
-</div>
-
-<div class="small">
-♡
-</div>
-
-<div class="small">
-○
-</div>
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-<!-- AI聊天页面 -->
-
-
-<div class="ai-page" id="aiPage">
-
-
-<div class="back" onclick="closeAI()">
-‹
-</div>
-
-
-<div class="ai-title">
-Angel AI
-</div>
-
-
-<div class="status">
-● 在线
-</div>
-
-
-
-<div class="chat">
-
-
-<div class="message from-ai">
-
-晚上好。<br>
-今天过得怎么样？
-
-</div>
-
-
-
-<div class="message from-user">
-
-还可以
-
-</div>
-
-
-
-<div class="message from-ai">
-
-听起来有一点累。<br>
-要不要陪你聊一会？
-
-</div>
-
-
-</div>
-
-
-
-<div class="input">
-
-输入消息...
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<script>
-
-
-function openAI(){
-
-document
-.getElementById("aiPage")
-.classList.add("show");
+    border:none;
 
 }
 
 
 
-function closeAI(){
 
-document
-.getElementById("aiPage")
-.classList.remove("show");
+/* 小号 */
+
+.account-box{
+
+    margin-top:40px;
+
+    padding:25px;
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(255,255,255,.5);
 
 }
-
-
-</script>
-
-
-
-</body>
-
-</html>
